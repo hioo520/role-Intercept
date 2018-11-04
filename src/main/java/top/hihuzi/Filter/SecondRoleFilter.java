@@ -18,7 +18,7 @@ public class SecondRoleFilter implements RoleFilter {
     public RoleRuleImpl execute(RoleRuleImpl roleRule) {
 
         if ((String.valueOf(roleRule.getT()[0])).equals("/second")) {
-            roleRule.cache().put("/second", roleRule.getArgs()==null?null: Arrays.asList(roleRule.getArgs()));
+            roleRule.cache().put("/second", roleRule.getArgs() == null ? null : Arrays.asList(roleRule.getArgs()));
             System.out.println("我是第二个!!!");
         }
         return roleRule;

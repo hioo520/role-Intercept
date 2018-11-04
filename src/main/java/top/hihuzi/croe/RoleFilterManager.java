@@ -14,7 +14,6 @@ import java.util.List;
  * @author: hihuzi 2018/11/4 10:04
  */
 public class RoleFilterManager {
-
     static RoleFilterChain roleFilterChain = RoleFilterChain.create();
 
     public static void setRoleFilterChain(RoleFilter roleFilter) {

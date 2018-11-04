@@ -18,7 +18,7 @@ public class FirstRoleFilter implements RoleFilter {
     public RoleRuleImpl execute(RoleRuleImpl roleRule) {
 
         if ((String.valueOf(roleRule.getT()[0])).equals("/first")) {
-            roleRule.cache().put("/first", roleRule.getArgs()==null?null: Arrays.asList(roleRule.getArgs()));
+            roleRule.cache().put("/first", roleRule.getArgs() == null ? null : Arrays.asList(roleRule.getArgs()));
             System.out.println("我是第一个!!!!");
         }
         return roleRule;

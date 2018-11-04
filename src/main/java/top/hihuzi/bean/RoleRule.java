@@ -1,6 +1,5 @@
 package top.hihuzi.bean;
 
-import javax.sound.midi.SoundbankResource;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,7 +20,8 @@ public class RoleRule<T> implements RoleRuleImpl {
 
     private static RoleRule ROLE_RULE = null;
 
-    public RoleRule(Object[] obj, String ... args) {
+    public RoleRule(Object[] obj, String... args) {
+
         this.t = (T[]) obj;
         this.args = args;
 
