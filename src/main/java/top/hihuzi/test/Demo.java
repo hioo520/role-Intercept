@@ -2,7 +2,10 @@ package top.hihuzi.test;
 
 import top.hihuzi.Application;
 import top.hihuzi.bean.RoleRule;
+import top.hihuzi.bean.RoleRuleImpl;
 import top.hihuzi.croe.RoleFilterManager;
+
+import javax.sound.midi.SoundbankResource;
 
 /**
  * tips
@@ -13,6 +16,7 @@ public class Demo {
     public static void main(String[] args) {
 
         RoleFilterManager.scanRoleRule(Application.class);
-        RoleFilterManager.excute(new RoleRule("3"));
+        RoleRuleImpl excute = RoleFilterManager.excute(new RoleRule("1"));
+        System.out.println(excute.get());
     }
 }

@@ -13,10 +13,13 @@ import top.hihuzi.croe.RoleFilter;
 public class FirstRoleFilter implements RoleFilter {
 
     @Override
-    public void execute(RoleRuleImpl roleRule) {
+    public RoleRuleImpl execute(RoleRuleImpl roleRule) {
 
-        if (roleRule.get().equals("1"))
+        if (roleRule.get().equals("1")) {
+            roleRule.set("2");
             System.out.println("我是第一个!!!!");
+        }
+        return roleRule;
     }
 
 }

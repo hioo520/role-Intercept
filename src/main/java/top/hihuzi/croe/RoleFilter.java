@@ -9,6 +9,6 @@ import top.hihuzi.bean.RoleRuleImpl;
  */
 public interface RoleFilter {
 
-    void execute(RoleRuleImpl roleRule);
+    RoleRuleImpl execute(RoleRuleImpl roleRule);
 
 }

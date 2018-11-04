@@ -13,10 +13,11 @@ import top.hihuzi.croe.RoleFilter;
 public class SecondRoleFilter implements RoleFilter {
 
     @Override
-    public void execute(RoleRuleImpl roleRule) {
+    public RoleRuleImpl execute(RoleRuleImpl roleRule) {
 
         if (roleRule.get().equals("2") )
             System.out.println("我是第二个!!!");
+        return roleRule;
     }
 
 }

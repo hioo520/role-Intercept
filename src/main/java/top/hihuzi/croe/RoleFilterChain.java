@@ -24,7 +24,8 @@ public class RoleFilterChain {
     public RoleRuleImpl excute(RoleRuleImpl roleRule) {
 
         for (RoleFilter fillter : fillters) {
-            fillter.execute(roleRule);
+            System.out.println("@@@@"+roleRule.get());
+            roleRule = fillter.execute(roleRule);
         }
         return roleRule;
     }
