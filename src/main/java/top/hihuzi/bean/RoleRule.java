@@ -14,11 +14,15 @@ public class RoleRule<T> implements RoleRuleImpl {
 
     private String[] args;
 
-    public static Map<Object, Boolean> cache = new HashMap<>();
+    public static Map<Object, Boolean> cache;
 
     private Boolean isPremission = true;
 
     private static RoleRule ROLE_RULE = null;
+
+    static {
+        cache = new HashMap<>();
+    }
 
     public RoleRule(Object[] obj, String... args) {
 

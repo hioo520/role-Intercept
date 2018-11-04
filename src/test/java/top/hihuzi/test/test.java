@@ -24,15 +24,15 @@ public class test {
 
         System.out.println("___________________________________1__________________________________________");
 
-        System.out.println(RoleFilterManager.excute(new RoleRule(new Object[]{"/first"}, null)));
+        System.out.println(RoleFilterManager.excute(new RoleRule(new Object[]{"/first"}, null)).cache().hashCode());
 
         System.out.println("____________________________________2_________________________________________");
 
-        System.out.println(RoleFilterManager.excute(new RoleRule(new Object[]{"/second"}, null)));
+        System.out.println(RoleFilterManager.excute(new RoleRule(new Object[]{"/second"}, null)).cache().hashCode());
 
         System.out.println("_____________________________________3________________________________________");
 
-        System.out.println(RoleFilterManager.excute(new RoleRule(new Object[]{"/three"}, "1", "2", "3")));
+        System.out.println(RoleFilterManager.excute(new RoleRule(new Object[]{"/three"}, "1", "2", "3")).cache().hashCode());
 
         System.out.println("_____________________________________4________________________________________");
 
