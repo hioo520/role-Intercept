@@ -4,8 +4,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>top.hihuzi</groupId>
-    <artifactId>chain_of_responsibility_model_management</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>roleIntercept</artifactId>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <name>chain_of_responsibility_model_management</name>
@@ -21,32 +21,37 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>11</java.version>
+        <javadoc.version>3.0.1</javadoc.version>
+        <maven.compiler.plugin>3.8.0</maven.compiler.plugin>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

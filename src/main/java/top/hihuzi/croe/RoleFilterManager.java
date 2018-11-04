@@ -14,7 +14,10 @@ import java.util.List;
  * @author: hihuzi 2018/11/4 10:04
  */
 public class RoleFilterManager {
+
     static RoleFilterChain roleFilterChain = RoleFilterChain.create();
+
+    static Boolean RUN_ONCE = true;
 
     public static void setRoleFilterChain(RoleFilter roleFilter) {
 
@@ -29,6 +32,10 @@ public class RoleFilterManager {
 
     public static void scanRoleRule(Class<?> primarySource) {
 
+        if (!RUN_ONCE) {
+            return;
+        }
+        RUN_ONCE = false;
         Annotation[] annotations = primarySource.getAnnotations();
         for (Annotation annotation : annotations) {
             if (annotation.annotationType().equals(ScanRoleConfig.class)) {

@@ -1,4 +1,4 @@
-package top.hihuzi.Filter;
+package top.hihuzi.filter;
 
 import top.hihuzi.annotation.RoleRule;
 import top.hihuzi.bean.RoleRuleImpl;
