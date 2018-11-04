@@ -1,8 +1,10 @@
-package top.hihuzi.test;
+package top.hihuzi.Filter;
 
 import top.hihuzi.annotation.RoleRule;
 import top.hihuzi.bean.RoleRuleImpl;
 import top.hihuzi.croe.RoleFilter;
+
+import java.util.Arrays;
 
 /**
  * tips
@@ -15,8 +17,8 @@ public class FirstRoleFilter implements RoleFilter {
     @Override
     public RoleRuleImpl execute(RoleRuleImpl roleRule) {
 
-        if (roleRule.get().equals("1")) {
-            roleRule.set("2");
+        if ((String.valueOf(roleRule.getT()[0])).equals("/first")) {
+            roleRule.cache().put("/first", roleRule.getArgs()==null?null: Arrays.asList(roleRule.getArgs()));
             System.out.println("我是第一个!!!!");
         }
         return roleRule;

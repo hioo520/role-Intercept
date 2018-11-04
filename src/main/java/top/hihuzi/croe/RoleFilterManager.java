@@ -1,6 +1,5 @@
 package top.hihuzi.croe;
 
-import top.hihuzi.Application;
 import top.hihuzi.annotation.RoleRule;
 import top.hihuzi.annotation.ScanRoleConfig;
 import top.hihuzi.bean.RoleRuleImpl;

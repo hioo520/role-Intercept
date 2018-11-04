@@ -1,30 +1,63 @@
 package top.hihuzi.bean;
 
+import javax.sound.midi.SoundbankResource;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * tips
  *
  * @author: hihuzi 2018/11/4 13:55
  */
-public class RoleRule implements RoleRuleImpl {
+public class RoleRule<T> implements RoleRuleImpl {
 
-    private String name;
+    private T[] t;
 
-    public RoleRule(String name) {
+    private String[] args;
 
-        this.name = name;
+    public static Map<Object, Boolean> cache = new HashMap<>();
+
+    private Boolean isPremission = true;
+
+    private static RoleRule ROLE_RULE = null;
+
+    public RoleRule(Object[] obj, String ... args) {
+        this.t = (T[]) obj;
+        this.args = args;
 
     }
 
     @Override
-    public void set(String value) {
+    public Boolean isPermission(Object[] obj, String... args) {
 
-        this.name = value;
+        return isPremission;
+    }
+
+    public T[] getT() {
+
+        return t;
     }
 
     @Override
-    public String get() {
+    public void setT(Object[] obj) {
 
-        return name;
+        this.t = (T[]) obj;
+    }
+
+    public String[] getArgs() {
+
+        return args;
+    }
+
+    public void setArgs(String[] args) {
+
+        this.args = args;
+    }
+
+    @Override
+    public Map<Object, Boolean> cache() {
+
+        return cache;
     }
 
 }

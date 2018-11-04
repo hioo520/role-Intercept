@@ -1,8 +1,10 @@
-package top.hihuzi.test;
+package top.hihuzi.Filter;
 
 import top.hihuzi.annotation.RoleRule;
 import top.hihuzi.bean.RoleRuleImpl;
 import top.hihuzi.croe.RoleFilter;
+
+import java.util.Arrays;
 
 /**
  * tips
@@ -15,8 +17,9 @@ public class ThreeRoleFilter implements RoleFilter {
     @Override
     public RoleRuleImpl execute(RoleRuleImpl roleRule) {
 
-        if (roleRule.get().equals("3"))
-            System.out.println("我是老三");
+        if ((String.valueOf(roleRule.getT()[0])).equals("/three"))
+            roleRule.cache().put("/three", roleRule.getArgs() == null ? null : Arrays.asList(roleRule.getArgs()));
+        System.out.println("我是老三");
         return roleRule;
     }
 

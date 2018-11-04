@@ -1,8 +1,10 @@
-package top.hihuzi.test;
+package top.hihuzi.Filter;
 
 import top.hihuzi.annotation.RoleRule;
 import top.hihuzi.bean.RoleRuleImpl;
 import top.hihuzi.croe.RoleFilter;
+
+import java.util.Arrays;
 
 /**
  * tips
@@ -15,9 +17,12 @@ public class SecondRoleFilter implements RoleFilter {
     @Override
     public RoleRuleImpl execute(RoleRuleImpl roleRule) {
 
-        if (roleRule.get().equals("2") )
+        if ((String.valueOf(roleRule.getT()[0])).equals("/second")) {
+            roleRule.cache().put("/second", roleRule.getArgs()==null?null: Arrays.asList(roleRule.getArgs()));
             System.out.println("我是第二个!!!");
+        }
         return roleRule;
+
     }
 
 }
