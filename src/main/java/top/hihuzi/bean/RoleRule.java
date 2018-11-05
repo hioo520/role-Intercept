@@ -25,6 +25,10 @@ public class RoleRule<T> implements RoleRuleImpl {
         caches = new HashMap<>();
     }
 
+    public RoleRule() {
+
+    }
+
     public RoleRule(Object[] obj, String... args) {
 
         this.t = (T[]) obj;

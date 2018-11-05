@@ -1,6 +1,6 @@
 package top.hihuzi.filter;
 
-import top.hihuzi.annotation.RoleRule;
+import top.hihuzi.annotation.RoleRules;
 import top.hihuzi.bean.RoleRuleImpl;
 import top.hihuzi.croe.RoleFilter;
 
@@ -11,7 +11,7 @@ import java.util.Arrays;
  *
  * @author: hihuzi 2018/11/4 10:22
  */
-@RoleRule
+@RoleRules
 public class FirstRoleFilter implements RoleFilter {
 
     @Override

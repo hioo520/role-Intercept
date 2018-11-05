@@ -1,6 +1,6 @@
 package top.hihuzi.croe;
 
-import top.hihuzi.annotation.RoleRule;
+import top.hihuzi.annotation.RoleRules;
 import top.hihuzi.annotation.ScanRoleConfig;
 import top.hihuzi.bean.RoleRuleImpl;
 import top.hihuzi.utils.FileUtils;
@@ -42,7 +42,7 @@ public class RoleFilterManager {
                 String value = ((ScanRoleConfig) annotation).value().split("\\.")[0];
                 List<Class<?>> allClass = FileUtils.getAllClass(value);
                 for (Class<?> aClass : allClass) {
-                    RoleRule roleRule = aClass.getAnnotation(RoleRule.class);
+                    RoleRules roleRule = aClass.getAnnotation(RoleRules.class);
                     if (null != roleRule) {
                         try {
                             setRoleFilterChain((RoleFilter) aClass.getConstructor(null).newInstance());
