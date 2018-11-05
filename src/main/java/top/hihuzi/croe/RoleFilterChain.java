@@ -5,7 +5,13 @@ import top.hihuzi.bean.RoleRuleImpl;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RoleFilterChain {
+/**
+ * tips  过滤器链式处理器
+ *
+ *@author: hihuzi 2018/11/5 9:16
+ */
+ public class RoleFilterChain {
+
 
     private static RoleFilterChain ROLE_FILTER_CHAIN = null;
 

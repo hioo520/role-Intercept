@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * tips
+ * tips 用来配置角色规则
  *
  * @author: hihuzi 2018/11/4 10:43
  */

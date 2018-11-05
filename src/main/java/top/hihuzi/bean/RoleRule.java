@@ -1,10 +1,12 @@
 package top.hihuzi.bean;
 
+import top.hihuzi.utils.StrUtils;
+
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * tips
+ * tips   过滤器中传递的对象
  *
  * @author: hihuzi 2018/11/4 13:55
  */
@@ -14,7 +16,7 @@ public class RoleRule<T> implements RoleRuleImpl {
 
     private String[] args;
 
-    public static Map<Object, Boolean> cache;
+    public static Map<Object, Object> cache;
 
     private Boolean isPremission = true;
 
@@ -32,11 +34,12 @@ public class RoleRule<T> implements RoleRuleImpl {
     }
 
     @Override
-    public Boolean isPermission(Object[] obj, String... args) {
+    public Object isPermission(Object[] obj, String... args) {
 
-        return isPremission;
+        return cache().get(StrUtils.objectToString(obj));
     }
 
+    @Override
     public T[] getT() {
 
         return t;
@@ -48,18 +51,20 @@ public class RoleRule<T> implements RoleRuleImpl {
         this.t = (T[]) obj;
     }
 
+    @Override
     public String[] getArgs() {
 
         return args;
     }
 
+    @Override
     public void setArgs(String[] args) {
 
         this.args = args;
     }
 
     @Override
-    public Map<Object, Boolean> cache() {
+    public Map<Object, Object> cache() {
 
         return cache;
     }

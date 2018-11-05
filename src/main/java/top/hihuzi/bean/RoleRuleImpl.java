@@ -3,13 +3,13 @@ package top.hihuzi.bean;
 import java.util.Map;
 
 /**
- * tips
+ * tips 过滤器中传递的对象
  *
  * @author: hihuzi 2018/11/4 13:50
  */
 public interface RoleRuleImpl<T> {
 
-    Boolean isPermission(T[] t, String... args);
+    Object isPermission(T[] t, String... args);
 
     T[] getT();
 
@@ -19,6 +19,6 @@ public interface RoleRuleImpl<T> {
 
     void setArgs(String[] args);
 
-    Map<Object, Boolean> cache();
+    Map<Object, Object> cache();
 
 }

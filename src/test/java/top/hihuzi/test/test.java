@@ -28,7 +28,11 @@ public class test {
 
         System.out.println("____________________________________2_________________________________________");
 
-        System.out.println(RoleFilterManager.excute(new RoleRule(new Object[]{"/second"}, null)).cache().hashCode());
+        System.out.println(RoleFilterManager.excute(new RoleRule(new Object[]{"/second","你好师姐!"}, null)).cache().hashCode());
+        RoleRuleImpl excute99 = RoleFilterManager.excute(new RoleRule(new Object[]{new Date()}, "1", "2", "3"));
+        Object permission99 = excute99.isPermission(new Object[]{"/second", "你好师姐!"});
+        System.out.println(permission99);
+        System.out.println(RoleFilterManager.excute(new RoleRule(new Object[]{"/second","你好师姐!"}, "1")).cache().hashCode());
 
         System.out.println("_____________________________________3________________________________________");
 
@@ -37,6 +41,8 @@ public class test {
         System.out.println("_____________________________________4________________________________________");
 
         RoleRuleImpl excute2 = RoleFilterManager.excute(new RoleRule(new Object[]{new Date()}, "1", "2", "3"));
+        Object permission = excute2.isPermission(new Object[]{"/second", "你好师姐!"});
+        System.out.println(permission);
         System.out.println(excute2.cache());
     }
 
