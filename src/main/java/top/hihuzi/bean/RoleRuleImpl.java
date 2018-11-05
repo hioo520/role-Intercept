@@ -9,7 +9,9 @@ import java.util.Map;
  */
 public interface RoleRuleImpl<T> {
 
-    Object isPermission(T[] t, String... args);
+    Object isPermissions(T[] t, String... args);
+
+    Boolean isPermission(T[] t, String... args);
 
     T[] getT();
 
@@ -19,6 +21,8 @@ public interface RoleRuleImpl<T> {
 
     void setArgs(String[] args);
 
-    Map<Object, Object> cache();
+    Map<Object, Object> caches();
+
+    Map<Object, Boolean> cache();
 
 }

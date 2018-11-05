@@ -16,14 +16,13 @@ public class RoleRule<T> implements RoleRuleImpl {
 
     private String[] args;
 
-    public static Map<Object, Object> cache;
+    public static Map<Object, Object> caches;
 
-    private Boolean isPremission = true;
-
-    private static RoleRule ROLE_RULE = null;
+    public static Map<Object, Boolean> cache;
 
     static {
         cache = new HashMap<>();
+        caches = new HashMap<>();
     }
 
     public RoleRule(Object[] obj, String... args) {
@@ -34,9 +33,15 @@ public class RoleRule<T> implements RoleRuleImpl {
     }
 
     @Override
-    public Object isPermission(Object[] obj, String... args) {
+    public Object isPermissions(Object[] obj, String... args) {
 
-        return cache().get(StrUtils.objectToString(obj));
+        return caches().get(StrUtils.objectToString(obj));
+    }
+
+    @Override
+    public Boolean isPermission(Object[] obj, String... args) {
+
+        return Boolean.valueOf(String.valueOf(cache().get(StrUtils.objectToString(obj))));
     }
 
     @Override
@@ -64,7 +69,13 @@ public class RoleRule<T> implements RoleRuleImpl {
     }
 
     @Override
-    public Map<Object, Object> cache() {
+    public Map<Object, Object> caches() {
+
+        return caches;
+    }
+
+    @Override
+    public Map<Object, Boolean> cache() {
 
         return cache;
     }
