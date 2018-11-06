@@ -15,7 +15,15 @@ import java.util.List;
  */
 public class FilterManager {
 
-    private static FilterChain roleFilterChain = FilterChainSimple.create();
+
+    /**
+     * tips 注入哪种类型的过滤器处理器
+     *
+     * @notice: 1.FilterChainDefault每次调用所有过滤器都会处理一次2.FilterChainSimple每次调用会在缓存中查找一次不存在的情况才所有的过滤器执行一次中途可以只要有一个过滤器找到便返回
+     * @author: hihuzi  18-11-6 下午1:36
+     */
+    private static FilterChain filterChain = FilterChainSimple.create();
+
 
     private static Boolean RUN_ONCE = true;
 
@@ -24,10 +32,10 @@ public class FilterManager {
      *
      * @author: hihuzi 2018/11/6 11:19
      */
-    private static void setRoleFilterChain(Filter filter) {
+    private static void setFilterChain(Filter filter) {
 
 
-        roleFilterChain.addRoleFilter(filter);
+        filterChain.addFilter(filter);
     }
 
     /**
@@ -38,7 +46,7 @@ public class FilterManager {
     public static Rule excute(Rule rule) {
 
 
-        roleFilterChain.excute(rule);
+        filterChain.excute(rule);
         return rule;
     }
 
@@ -62,7 +70,7 @@ public class FilterManager {
                     RoleRules roleRule = aClass.getAnnotation(RoleRules.class);
                     if (null != roleRule) {
                         try {
-                            setRoleFilterChain((Filter) aClass.getConstructor(null).newInstance());
+                            setFilterChain((Filter) aClass.getConstructor(null).newInstance());
                         } catch (Exception e) {
                         }
                     }

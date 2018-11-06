@@ -36,7 +36,7 @@ class FilterChainSimple implements FilterChain {
      *
      * @author: hihuzi 2018/11/6 11:19
      */
-    public FilterChainSimple addRoleFilter(Filter filter) {
+    public FilterChainSimple addFilter(Filter filter) {
 
 
         fillters.add(filter);
@@ -55,6 +55,9 @@ class FilterChainSimple implements FilterChain {
 
             for (Filter fillter : fillters) {
                 rule = fillter.execute(rule);
+                if (new RuleSimple().isPermission(rule.getKey())) {
+                    return rule;
+                }
             }
         }
         return rule;

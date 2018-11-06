@@ -4,7 +4,7 @@ import top.hihuzi.bean.Rule;
 
 public interface FilterChain {
 
-    FilterChain addRoleFilter(Filter filter);
+    FilterChain addFilter(Filter filter);
 
     Rule excute(Rule rule);
 
