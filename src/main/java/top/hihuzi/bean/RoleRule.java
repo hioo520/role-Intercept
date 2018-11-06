@@ -45,7 +45,7 @@ public class RoleRule<T> implements RoleRuleImpl {
     @Override
     public Boolean isPermission(Object[] obj, String... args) {
 
-        return Boolean.valueOf(String.valueOf(cache().get(StrUtils.objectToString(obj))));
+        return Boolean.valueOf(String.valueOf(cache.get(StrUtils.objectToString(obj))));
     }
 
     @Override
