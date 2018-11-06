@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * tips  过滤器链式处理器
+ * tips  过滤器链式处理器(简单处理器)
  *
  * @notice: 采用内部类懒加载
  * @author: hihuzi 2018/11/5 9:16

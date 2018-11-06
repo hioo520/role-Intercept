@@ -34,7 +34,13 @@ public class RuleSimple<key> implements Rule {
 
     }
 
+    /**
+     * tips null 或者 false 都是 false
+     *
+     * @author: hihuzi 18-11-6 下午9:25
+     */
     @Override
+
     public Boolean isPermission(Object[] obj, String... args) {
 
         return Boolean.valueOf(String.valueOf(cache.get(StrUtils.objectToString(obj))));
