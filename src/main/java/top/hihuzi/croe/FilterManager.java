@@ -22,8 +22,13 @@ public class FilterManager {
      * @notice: 1.FilterChainDefault每次调用所有过滤器都会处理一次2.FilterChainSimple每次调用会在缓存中查找一次不存在的情况才所有的过滤器执行一次中途可以只要有一个过滤器找到便返回
      * @author: hihuzi  18-11-6 下午1:36
      */
-    private static FilterChain filterChain = FilterChainSimple.create();
+    private static FilterChain filterChain;
 
+    private FilterChain DEFAULT = null;
+
+    static {
+        filterChain = FilterChainSimple.create();
+    }
 
     private static Boolean RUN_ONCE = true;
 
@@ -32,8 +37,7 @@ public class FilterManager {
      *
      * @author: hihuzi 2018/11/6 11:19
      */
-    private static void setFilterChain(Filter filter) {
-
+    private static void add(Filter filter) {
 
         filterChain.addFilter(filter);
     }
@@ -45,9 +49,18 @@ public class FilterManager {
      */
     public static Rule excute(Rule rule) {
 
-
         filterChain.excute(rule);
         return rule;
+    }
+
+    /**
+     * tips 配置过滤器执行器执行策略
+     *
+     * @author: hihuzi 2018/11/6 14:23
+     */
+    public static void setFilterChain(FilterChain filterChain) {
+
+        filterChain = filterChain;
     }
 
     /**
@@ -70,7 +83,7 @@ public class FilterManager {
                     RoleRules roleRule = aClass.getAnnotation(RoleRules.class);
                     if (null != roleRule) {
                         try {
-                            setFilterChain((Filter) aClass.getConstructor(null).newInstance());
+                            add((Filter) aClass.getConstructor(null).newInstance());
                         } catch (Exception e) {
                         }
                     }
