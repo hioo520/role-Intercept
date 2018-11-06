@@ -2,7 +2,7 @@ package top.hihuzi.croe;
 
 import top.hihuzi.annotation.RoleRules;
 import top.hihuzi.annotation.ScanRoleConfig;
-import top.hihuzi.bean.RoleRuleImpl;
+import top.hihuzi.bean.Rule;
 import top.hihuzi.utils.FileUtils;
 
 import java.lang.annotation.Annotation;
@@ -13,31 +13,33 @@ import java.util.List;
  *
  * @author: hihuzi 2018/11/4 10:04
  */
-public class RoleFilterManager {
+public class FilterManager {
 
-    private static RoleFilterChain roleFilterChain = RoleFilterChain.create();
+    private static FilterChain roleFilterChain = FilterChainSimple.create();
 
     private static Boolean RUN_ONCE = true;
 
     /**
      * tips 加入过滤器
-     *@author: hihuzi 2018/11/6 11:19
+     *
+     * @author: hihuzi 2018/11/6 11:19
      */
-    private static void setRoleFilterChain(RoleFilter roleFilter) {
-    
+    private static void setRoleFilterChain(Filter filter) {
 
-        roleFilterChain.addRoleFilter(roleFilter);
+
+        roleFilterChain.addRoleFilter(filter);
     }
 
     /**
      * tips 执行过滤器
-     *@author: hihuzi 2018/11/6 11:19
+     *
+     * @author: hihuzi 2018/11/6 11:19
      */
-    public static RoleRuleImpl excute(RoleRuleImpl roleRule) {
-    
+    public static Rule excute(Rule rule) {
 
-        roleFilterChain.excute(roleRule);
-        return roleRule;
+
+        roleFilterChain.excute(rule);
+        return rule;
     }
 
     /**
@@ -60,7 +62,7 @@ public class RoleFilterManager {
                     RoleRules roleRule = aClass.getAnnotation(RoleRules.class);
                     if (null != roleRule) {
                         try {
-                            setRoleFilterChain((RoleFilter) aClass.getConstructor(null).newInstance());
+                            setRoleFilterChain((Filter) aClass.getConstructor(null).newInstance());
                         } catch (Exception e) {
                         }
                     }

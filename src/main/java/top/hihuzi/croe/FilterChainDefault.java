@@ -1,6 +1,6 @@
 package top.hihuzi.croe;
 
-import top.hihuzi.bean.RoleRuleImpl;
+import top.hihuzi.bean.Rule;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,20 +11,20 @@ import java.util.List;
  * @notice: 采用内部类懒加载
  * @author: hihuzi 2018/11/5 9:16
  */
-class RoleFilterChain {
+class FilterChainDefault implements FilterChain {
 
     /**
      * tips 单例对象
      **/
 
-    private static RoleFilterChain ROLE_FILTER_CHAIN = null;
+    private static FilterChainDefault ROLE_FILTER_CHAIN = null;
 
     /**
      * tips 所有过滤器的容器
      *
      * @author: hihuzi  2018/11/6 11:15
      */
-    private static List<RoleFilter> fillters;
+    private static List<Filter> fillters;
 
     static {
         fillters = new ArrayList<>();
@@ -35,10 +35,10 @@ class RoleFilterChain {
      *
      * @author: hihuzi 2018/11/6 11:19
      */
-    RoleFilterChain addRoleFilter(RoleFilter roleFilter) {
+    public FilterChainDefault addRoleFilter(Filter filter) {
 
 
-        fillters.add(roleFilter);
+        fillters.add(filter);
         return this;
     }
 
@@ -47,12 +47,12 @@ class RoleFilterChain {
      *
      * @author: hihuzi 2018/11/6 11:13
      */
-    RoleRuleImpl excute(RoleRuleImpl roleRule) {
+    public Rule excute(Rule rule) {
 
-        for (RoleFilter fillter : fillters) {
-            roleRule = fillter.execute(roleRule);
+        for (Filter fillter : fillters) {
+            rule = fillter.execute(rule);
         }
-        return roleRule;
+        return rule;
     }
 
     /**
@@ -62,7 +62,7 @@ class RoleFilterChain {
      */
     private static class Create {
 
-        private static final RoleFilterChain ROLE_FILTER_CHAIN = new RoleFilterChain();
+        private static final FilterChainDefault ROLE_FILTER_CHAIN = new FilterChainDefault();
 
     }
 
@@ -71,7 +71,7 @@ class RoleFilterChain {
      *
      * @author: hihuzi 2018/11/6 11:23
      */
-    static RoleFilterChain create() {
+    static FilterChainDefault create() {
 
 
         if (null == ROLE_FILTER_CHAIN) {
