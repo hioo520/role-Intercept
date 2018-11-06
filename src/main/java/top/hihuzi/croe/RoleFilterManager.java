@@ -15,21 +15,36 @@ import java.util.List;
  */
 public class RoleFilterManager {
 
-    static RoleFilterChain roleFilterChain = RoleFilterChain.create();
+    private static RoleFilterChain roleFilterChain = RoleFilterChain.create();
 
-    static Boolean RUN_ONCE = true;
+    private static Boolean RUN_ONCE = true;
 
-    public static void setRoleFilterChain(RoleFilter roleFilter) {
+    /**
+     * tips 加入过滤器
+     *@author: hihuzi 2018/11/6 11:19
+     */
+    private static void setRoleFilterChain(RoleFilter roleFilter) {
+    
 
         roleFilterChain.addRoleFilter(roleFilter);
     }
 
+    /**
+     * tips 执行过滤器
+     *@author: hihuzi 2018/11/6 11:19
+     */
     public static RoleRuleImpl excute(RoleRuleImpl roleRule) {
+    
 
         roleFilterChain.excute(roleRule);
         return roleRule;
     }
 
+    /**
+     * tips 自动注入 过滤器配置
+     *
+     * @author: hihuzi  2018/11/6 11:18
+     */
     public static void scanRoleRule(Class<?> primarySource) {
 
         if (!RUN_ONCE) {
