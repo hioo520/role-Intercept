@@ -1,6 +1,8 @@
 package top.hihuzi.utils;
 
 
+import top.hihuzi.bean.Rule;
+
 import java.util.Collection;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -15,12 +17,12 @@ public class StrUtils {
 
     /**
      * 初始化 get
-     * */
+     */
     private static StringBuffer GET = new StringBuffer().append("get");
 
     /**
      * 初始化 set
-     * */
+     */
     private static StringBuffer SET = new StringBuffer().append("set");
 
     private static Pattern linePattern = Pattern.compile("_(\\w)");
@@ -232,4 +234,26 @@ public class StrUtils {
         return sb.toString();
 
     }
+
+    /**
+     * tips 用于规则校验
+     *
+     * @author: hihuzi 2018/11/6 14:46
+     */
+    public static boolean roleCheck(Rule rule, String... args) {
+
+        int j = 0;
+        Object[] keys = rule.getKey();
+        for (int i = 0; i < keys.length; i++) {
+            if (keys[i].toString().equals(args[i])) {
+                j++;
+            }
+        }
+        if (keys.length == j) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
